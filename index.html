@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yusuf Laundry Mart</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f7fbff;
+      color: #102033;
+      line-height: 1.6;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 900;
+      color: #075985;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0891b2, #2563eb);
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 8px 18px rgba(8, 145, 178, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #0891b2;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0891b2, #2563eb);
+      color: white;
+      box-shadow: 0 12px 25px rgba(8, 145, 178, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(8, 145, 178, 0.38);
+    }
+
+    .btn-light {
+      background: white;
+      color: #075985;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 140px 25px 80px;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at top right, #bae6fd 0%, transparent 35%),
+        radial-gradient(circle at bottom left, #bfdbfe 0%, transparent 35%),
+        linear-gradient(135deg, #ecfeff, #ffffff, #eff6ff);
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      color: #075985;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 1.02;
+      font-weight: 950;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #0891b2;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #475569;
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #075985;
+      border: 2px solid #bae6fd;
+    }
+
+    .btn-outline:hover {
+      background: #e0f2fe;
+    }
+
+    .hero-card {
+      background: white;
+      padding: 20px;
+      border-radius: 38px;
+      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.16);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    .machine-card {
+      min-height: 460px;
+      border-radius: 30px;
+      padding: 35px;
+      color: white;
+      background: linear-gradient(145deg, #0891b2, #2563eb);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .bubble.one {
+      width: 150px;
+      height: 150px;
+      right: -45px;
+      top: -45px;
+    }
+
+    .bubble.two {
+      width: 100px;
+      height: 100px;
+      left: 25px;
+      bottom: 115px;
+    }
+
+    .bubble.three {
+      width: 70px;
+      height: 70px;
+      right: 70px;
+      bottom: 55px;
+    }
+
+    .washer {
+      width: 150px;
+      height: 170px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 24px;
+      padding: 18px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+
+    .washer-top {
+      height: 20px;
+      display: flex;
+      gap: 7px;
+      margin-bottom: 17px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      background: #0891b2;
+      border-radius: 50%;
+    }
+
+    .washer-door {
+      width: 85px;
+      height: 85px;
+      margin: auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dff8ff, #60a5fa);
+      border: 8px solid #075985;
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .machine-card h2 {
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      z-index: 2;
+    }
+
+    .machine-card p {
+      color: #e0f7ff;
+      z-index: 2;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+    }
+
+    section {
+      padding: 90px 25px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 55px;
+    }
+
+    .section-title .small {
+      color: #0891b2;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.1;
+      margin-bottom: 15px;
+      letter-spacing: -1.8px;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 18px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 35px;
+      border-radius: 28px;
+      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+      transition: 0.35s ease;
+      border: 1px solid #eef2f7;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.13);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      background: #e0f2fe;
+      color: #0891b2;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: #64748b;
+    }
+
+    .why {
+      background: white;
+    }
+
+    .why-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .why h2 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -1.8px;
+      margin-bottom: 25px;
+    }
+
+    .why p {
+      color: #64748b;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .checks {
+      display: grid;
+      gap: 16px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    .check span {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #dcfce7;
+      color: #16a34a;
+      font-weight: 900;
+    }
+
+    .why-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .why-box {
+      padding: 32px;
+      border-radius: 28px;
+      color: white;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+    }
+
+    .why-box:first-child {
+      background: linear-gradient(135deg, #0891b2, #22c55e);
+    }
+
+    .why-box:last-child {
+      background: linear-gradient(135deg, #0f172a, #2563eb);
+      margin-top: 45px;
+    }
+
+    .why-box .emoji {
+      font-size: 42px;
+    }
+
+    .why-box h3 {
+      font-size: 29px;
+      line-height: 1.1;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .process-card {
+      background: white;
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.07);
+      border: 1px solid #edf2f7;
+      position: relative;
+    }
+
+    .number {
+      width: 45px;
+      height: 45px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      background: linear-gradient(135deg, #0891b2, #2563eb);
+      margin-bottom: 18px;
+    }
+
+    .process-card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .process-card p {
+      color: #64748b;
+    }
+
+    .pricing {
+      background: #f0f9ff;
+    }
+
+    .price-table {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.1);
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      border-bottom: 1px solid #edf2f7;
+      font-weight: 800;
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .price-row span:last-child {
+      color: #0891b2;
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: white;
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+      border: 1px solid #eef2f7;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .testimonial p {
+      color: #475569;
+      margin-bottom: 18px;
+    }
+
+    .testimonial strong {
+      color: #075985;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #0f172a, #075985, #0891b2);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -1.8px;
+    }
+
+    .cta p {
+      color: #e0f2fe;
+      max-width: 650px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .contact-info,
+    .contact-form {
+      background: white;
+      border-radius: 30px;
+      padding: 35px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      border: 1px solid #edf2f7;
+    }
+
+    .contact-info h3,
+    .contact-form h3 {
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 14px;
+      margin: 20px 0;
+      color: #475569;
+      font-weight: 700;
+    }
+
+    .info-item span {
+      font-size: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px 17px;
+      border-radius: 16px;
+      border: 1px solid #cbd5e1;
+      outline: none;
+      font-size: 15px;
+      background: #f8fafc;
+      transition: 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #0891b2;
+      box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.12);
+      background: white;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    footer p {
+      color: #cbd5e1;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: #0891b2;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 10px 25px rgba(8, 145, 178, 0.35);
+      z-index: 999;
+    }
+
+    .back-top.show {
+      display: block;
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 30px;
+      cursor: pointer;
+      color: #075985;
+    }
+
+    @media (max-width: 900px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        right: 25px;
+        width: 230px;
+        background: white;
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero-container,
+      .why-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 15px 18px;
+      }
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .hero-card {
+        padding: 12px;
+        border-radius: 28px;
+      }
+
+      .machine-card {
+        min-height: 400px;
+        padding: 25px;
+      }
+
+      .machine-card h2 {
+        font-size: 32px;
+      }
+
+      .stats,
+      .why-boxes,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-box:last-child {
+        margin-top: 0;
+      }
+
+      .price-row {
+        padding: 20px;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">🫧</div>
+        <span>YUSUF LAUNDRY MART</span>
+      </div>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-container">
+        <div class="hero-text">
+          <div class="badge">✨ Fresh. Fast. Reliable.</div>
+          <h1>Professional laundry care made <span>simple.</span></h1>
+          <p>
+            Welcome to Yusuf Laundry Mart — your trusted place for clean, fresh, well-ironed clothes. We offer washing,
+            folding, dry cleaning, ironing, pickup, and delivery with premium care.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Book a Pickup</a>
+            <a href="#services" class="btn btn-outline">View Services</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="machine-card">
+            <span class="bubble one"></span>
+            <span class="bubble two"></span>
+            <span class="bubble three"></span>
+
+            <div class="washer">
+              <div class="washer-top">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <div class="washer-door"></div>
+            </div>
+
+            <div>
+              <h2>Clean clothes, fresh confidence.</h2>
+              <p>Premium laundry service for everyday wear, office wear, bedsheets, duvets, and delicate fabrics.</p>
+            </div>
+
+            <div class="stats">
+              <div class="stat"><strong>24h</strong><span>Fast Service</span></div>
+              <div class="stat"><strong>100%</strong><span>Fresh Care</span></div>
+              <div class="stat"><strong>5★</strong><span>Quality</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">OUR SERVICES</div>
+          <h2>Everything your clothes need</h2>
+          <p>From regular washing to premium dry cleaning, we treat every fabric with care and attention.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">👕</div>
+            <h3>Wash & Fold</h3>
+            <p>We wash, dry, and neatly fold your clothes so they are fresh and ready to wear.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">✨</div>
+            <h3>Dry Cleaning</h3>
+            <p>Perfect for suits, dresses, native wears, delicate fabrics, and special clothing items.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🧺</div>
+            <h3>Ironing & Packaging</h3>
+            <p>Your clothes are carefully ironed, arranged, and packaged for a clean professional look.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🚚</div>
+            <h3>Pickup & Delivery</h3>
+            <p>We pick up your laundry and deliver it back to you fresh, clean, and on time.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🛏️</div>
+            <h3>Bedsheets & Duvets</h3>
+            <p>Deep cleaning for bedsheets, blankets, duvets, pillowcases, and household fabrics.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🧼</div>
+            <h3>Stain Treatment</h3>
+            <p>We carefully handle tough stains and give your clothes the best possible finish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why">
+      <div class="container why-content">
+        <div>
+          <div class="section-title" style="text-align:left; margin:0 0 25px;">
+            <div class="small">WHY CHOOSE US</div>
+          </div>
+          <h2>Clean clothes. Less stress. More time.</h2>
+          <p>
+            Yusuf Laundry Mart is built for people who want reliable laundry service without stress. We focus on
+            freshness, speed, neat finishing, and excellent customer experience.
+          </p>
+
+          <div class="checks">
+            <div class="check"><span>✓</span> Careful fabric handling</div>
+            <div class="check"><span>✓</span> Affordable and transparent pricing</div>
+            <div class="check"><span>✓</span> Fast pickup and delivery</div>
+            <div class="check"><span>✓</span> Neat ironing and packaging</div>
+          </div>
+        </div>
+
+        <div class="why-boxes">
+          <div class="why-box">
+            <div class="emoji">⏱️</div>
+            <h3>Fast Turnaround</h3>
+            <p>Get your laundry done quickly without losing quality.</p>
+          </div>
+
+          <div class="why-box">
+            <div class="emoji">⭐</div>
+            <h3>Premium Finish</h3>
+            <p>Your clothes return fresh, clean, ironed, and well packed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <div class="small">HOW IT WORKS</div>
+          <h2>Simple laundry process</h2>
+          <p>Book your service in minutes and let us handle the rest.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="number">1</div>
+            <h3>Book</h3>
+            <p>Contact us and choose the laundry service you need.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">2</div>
+            <h3>Pickup</h3>
+            <p>We collect your laundry from your preferred location.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">3</div>
+            <h3>Clean</h3>
+            <p>Your clothes are washed, dried, ironed, and packaged.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">4</div>
+            <h3>Deliver</h3>
+            <p>We deliver everything back fresh and ready to use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">SIMPLE PRICING</div>
+          <h2>Affordable laundry care</h2>
+          <p>Prices can be adjusted depending on quantity, fabric type, and service request.</p>
+        </div>
+
+        <div class="price-table">
+          <div class="price-row"><span>Shirts / Tops</span><span>From ₦700</span></div>
+          <div class="price-row"><span>Trousers / Jeans</span><span>From ₦900</span></div>
+          <div class="price-row"><span>Native Wear</span><span>From ₦1,500</span></div>
+          <div class="price-row"><span>Bedsheets</span><span>From ₦1,500</span></div>
+          <div class="price-row"><span>Duvets</span><span>From ₦3,000</span></div>
+          <div class="price-row"><span>Pickup & Delivery</span><span>On Request</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <div class="small">CUSTOMER REVIEWS</div>
+          <h2>What people say</h2>
+          <p>We care about quality service and happy customers.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“My clothes came back very clean and neatly packaged. The service was fast and professional.”</p>
+            <strong>— Aisha M.</strong>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“I love the pickup and delivery option. It saved me a lot of time.”</p>
+            <strong>— Daniel O.</strong>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“Their ironing is very neat. My office shirts always look fresh.”</p>
+            <strong>— Chinedu K.</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Ready for fresh, clean laundry?</h2>
+        <p>Book your laundry pickup today and enjoy a cleaner, easier lifestyle with Yusuf Laundry Mart.</p>
+        <a href="#contact" class="btn btn-light">Book Now</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-content">
+        <div class="contact-info">
+          <h3>Contact Us</h3>
+          <p>Reach out today to book a laundry pickup or ask about our services.</p>
+
+          <div class="info-item"><span>📞</span>
+            <div>+234 000 000 0000</div>
+          </div>
+          <div class="info-item"><span>📍</span>
+            <div>Lagos, Nigeria</div>
+          </div>
+          <div class="info-item"><span>⏰</span>
+            <div>Monday - Saturday: 8:00 AM - 7:00 PM</div>
+          </div>
+          <div class="info-item"><span>✉️</span>
+            <div>hello@yusuflaundrymart.com</div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="bookingForm">
+          <h3>Book a Pickup</h3>
+
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required />
+          </div>
+
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder="Phone Number" required />
+          </div>
+
+          <div class="form-group">
+            <select id="service" required>
+              <option value="">Select Service</option>
+              <option>Wash & Fold</option>
+              <option>Dry Cleaning</option>
+              <option>Ironing</option>
+              <option>Bedsheets & Duvets</option>
+              <option>Pickup & Delivery</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <textarea id="message" placeholder="Pickup address or extra details"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Submit Booking</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h3>YUSUF LAUNDRY MART</h3>
+    <p>Professional laundry and dry cleaning service you can trust.</p>
+    <p style="margin-top:10px;">© 2026 Yusuf Laundry Mart. All rights reserved.</p>
+  </footer>
+
+  <button class="back-top" id="backTop">↑</button>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const backTop = document.getElementById('backTop');
+    const bookingForm = document.getElementById('bookingForm');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 450) {
+        backTop.classList.add('show');
+      } else {
+        backTop.classList.remove('show');
+      }
+    });
+
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    bookingForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const service = document.getElementById('service').value;
+
+      if (!name || !service) {
+        alert('Please fill in your name and select a service.');
+        return;
+      }
+
+      alert(`Thank you, ${name}! Your booking request for ${service} has been received. We will contact you shortly.`);
+      bookingForm.reset();
+    });
+  </script>
+</body>
+
+</html>
