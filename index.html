@@ -1146,12 +1146,11 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    bookingForm.addEventListener('submit', (event) => {
-      event.preventDefault();
+     bookingForm.addEventListener('submit', (event) => {
+    const name = document.getElementById('name').value.trim();
+    const service = document.getElementById('service').value;
 
-      const name = document.getElementById('name').value.trim();
-      const service = document.getElementById('service').value;
-
+       
       if (!name || !service) {
         alert('Please fill in your name and select a service.');
         return;
