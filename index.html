@@ -1051,34 +1051,59 @@
           </div>
         </div>
 
-        <form class="contact-form" id="bookingForm">
-          <h3>Book a Pickup</h3>
+       <form class="contact-form"
+      id="bookingForm"
+      name="booking"
+      method="POST"
+      data-netlify="true">
 
-          <div class="form-group">
-            <input type="text" id="name" placeholder="Your Name" required />
-          </div>
+  <input type="hidden" name="form-name" value="booking">
 
-          <div class="form-group">
-            <input type="tel" id="phone" placeholder="Phone Number" required />
-          </div>
+  <h3>Book a Pickup</h3>
 
-          <div class="form-group">
-            <select id="service" required>
-              <option value="">Select Service</option>
-              <option>Wash & Fold</option>
-              <option>Dry Cleaning</option>
-              <option>Ironing</option>
-              <option>Bedsheets & Duvets</option>
-              <option>Pickup & Delivery</option>
-            </select>
-          </div>
+  <div class="form-group">
+    <input type="text"
+           id="name"
+           name="name"
+           placeholder="Your Name"
+           required />
+  </div>
 
-          <div class="form-group">
-            <textarea id="message" placeholder="Pickup address or extra details"></textarea>
-          </div>
+  <div class="form-group">
+    <input type="tel"
+           id="phone"
+           name="phone"
+           placeholder="Phone Number"
+           pattern="[0-9]{11}"
+           required />
+  </div>
 
-          <button type="submit" class="btn btn-primary" style="width:100%;">Submit Booking</button>
-        </form>
+  <div class="form-group">
+    <select id="service"
+            name="service"
+            required>
+      <option value="">Select Service</option>
+      <option>Wash & Fold</option>
+      <option>Dry Cleaning</option>
+      <option>Ironing</option>
+      <option>Bedsheets & Duvets</option>
+      <option>Pickup & Delivery</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <textarea id="message"
+              name="message"
+              placeholder="Pickup address or extra details"></textarea>
+  </div>
+
+  <button type="submit"
+          class="btn btn-primary"
+          style="width:100%;">
+    Submit Booking
+  </button>
+
+</form>
       </div>
     </section>
   </main>
